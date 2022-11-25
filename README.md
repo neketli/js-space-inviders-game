@@ -6,7 +6,7 @@ To run the project, you need the live server extension for vs code or any other 
 
 `←` Arrows to move `→` and `spacebar` to fire.
 
-![space-invaders](https://user-images.githubusercontent.com/48692866/190205615-a81262d1-dd7f-40b4-b400-f59cbcd98fa8.gif)
+![game](https://user-images.githubusercontent.com/48692866/204003231-4b54bb84-22f4-4c74-abfe-394661b842e2.gif)
 
 ## Features of this implementation :star:
 
