@@ -5,6 +5,9 @@
 
 body {
   overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-color: #e5e5e5;
 }
 
 #hero,
@@ -45,9 +48,24 @@ body {
 
 th {
   padding: 10px;
+  font: 1.3em sans-serif;
+}
+
+td {
+  font: 1em sans-serif;
+  padding: 0 10px;
 }
 
 #leaderboard {
   z-index: 2;
   width: 100%;
+}
+
+#score {
+  position: absolute;
+  z-index: 3;
+  font: 1.3em sans-serif;
+
+  right: 2vw;
+  top: 50vh;
 }
