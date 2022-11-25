@@ -48,6 +48,7 @@ class Shot {
 }
 
 const ctx = document.getElementById("canvas").getContext("2d");
+const scoreElement = document.getElementById("score");
 const hero = new GameObject(220, 450, document.getElementById("hero"));
 let enemies = [];
 let heroShot, enemyShot;
@@ -105,7 +106,7 @@ function initLeaderboard(user = null) {
     leaderboardData = leaderboardData.filter((item) => item.name !== user.name);
     leaderboardData = [...leaderboardData, user];
   }
-  leaderboardData = leaderboardData.sort((a, b) => b.balance - a.balance);
+  leaderboardData = leaderboardData.sort((a, b) => b.score - a.score);
   leaderboardData = leaderboardData.slice(0, 5);
 
   // Clear table
@@ -130,7 +131,7 @@ function init() {
 }
 
 function draw() {
-  ctx.fillStyle = "#ddd";
+  ctx.fillStyle = "#e5e5e5";
   ctx.fillRect(0, 0, 500, 500);
   enemies.forEach((enemy) => enemy.draw(ctx));
   hero.draw(ctx);
@@ -163,6 +164,7 @@ async function move() {
       hit.active = false;
       heroShot = null;
       score++;
+      scoreElement.innerText = `Your score: ${score}`;
       if (!enemies.filter((enemy) => enemy.active).length) {
         init();
         enemyDy += 0.1;
@@ -185,19 +187,30 @@ function game() {
   move();
   draw();
 
-  // if (isGameOver()) {
-  //   alert(`Game over\nYour score is: ${score}`);
-  //   clearInterval(interval);
-  // }
+  if (isGameOver()) {
+    alert(`Game over\nYour score is: ${score}`);
+    clearInterval(interval);
+    const name = prompt("Your name", "");
+
+    if (name) {
+      initLeaderboard({
+        name,
+        score,
+      });
+    }
+
+    const isReload = confirm("Try again?");
+    if (isReload) {
+      location.reload();
+    }
+  }
 }
 
 function start() {
+  heroShot = null;
+  enemyShot = null;
   init();
-  const user = JSON.parse(localStorage.getItem("user")) || {
-    name: "user",
-    score: 0,
-  };
-  initLeaderboard(user);
+  initLeaderboard();
   document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft" && hero.x > 20) {
       hero.move(-heroDx, 0);
