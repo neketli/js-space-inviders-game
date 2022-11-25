@@ -4,12 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Platformer-game</title>
   </head>
   <body>
-    <img id="enemy" src="/assets/enemy.png" style="display: none" />
-    <img id="hero" src="/assets/shuttle.png" style="display: none" />
-    <canvas id="canvas" width="500" height="750"></canvas>
-    <script src="app.js"></script>
+    <main id="game-wrapper">
+      <img id="enemy" src="/assets/enemy.png" />
+      <img id="hero" src="/assets/shuttle.png" />
+      <img id="bg" src="/assets/bg.png" />
+      <div id="records">
+        <h2>Records table</h2>
+        <table id="leaderboard">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Record</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <canvas id="canvas" width="500" height="500"></canvas>
+      <script src="app.js"></script>
+    </main>
   </body>
 </html>

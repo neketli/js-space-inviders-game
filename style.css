@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
+}
+
+#hero,
+#enemy {
+  display: none;
+}
+
+#game-wrapper {
+  position: relative;
+}
+
+#bg {
+  position: absolute;
+  z-index: 1;
+  transform: translate(-5%, -15%) scale(0.9);
+}
+
+#canvas {
+  position: absolute;
+  z-index: 2;
+  transform: translate(95%, 23%) scale(0.9);
+  border-radius: 15px;
+}
+
+#records {
+  max-width: 300px;
+  z-index: 2;
+  position: absolute;
+  transform: translate(10%, 150%);
+}
+
+#records h2 {
+  max-width: 300px;
+  z-index: 2;
+  font: 2em sans-serif;
+  color: black;
+}
+
+th {
+  padding: 10px;
+}
+
+#leaderboard {
+  z-index: 2;
+  width: 100%;
+}
